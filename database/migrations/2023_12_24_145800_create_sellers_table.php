@@ -13,6 +13,18 @@ return new class extends Migration
     {
         Schema::create('sellers', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->nullable();
+            $table->string('username')->unique()->nullable();
+            $table->string('email')->unique()->nullable();
+            $table->string('password')->nullable();
+            $table->string('picture')->nullable();
+            $table->string('address')->nullable();
+            $table->string('phone')->nullable();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->enum('status', ['pending', 'active'])->default('pending');
+            $table->string('payment_method')->nullable();
+            $table->string('payment_email')->nullable();
+            
             $table->timestamps();
         });
     }

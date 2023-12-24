@@ -17,12 +17,9 @@ class Seller extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    protected $guarded = [];
 
+    protected $guard = 'seller';
     /**
      * The attributes that should be hidden for serialization.
      *

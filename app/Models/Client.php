@@ -17,12 +17,9 @@ class CLient extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    protected $guarded = [];
 
+    protected $guard = 'client';
     /**
      * The attributes that should be hidden for serialization.
      *
