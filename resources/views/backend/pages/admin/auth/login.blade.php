@@ -8,19 +8,42 @@
         <div class="login-title">
             <h2 class="text-center text-primary">Admin Login</h2>
         </div>
-        <form>
+        <form action="{{ route('login_handler') }}" method="POST">
+            @csrf
+            @if (Session::get('fail'))
+                <div class="alert alert-danger">
+                    {{ Session::get('fail') }}
+                    <button class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
             <div class="input-group custom">
-                <input type="text" class="form-control form-control-lg" placeholder="Username">
+                <input type="text" class="form-control form-control-lg" placeholder="Username / Email"
+                    name="login_id" value="{{ old('login_id') }}"
+                >
                 <div class="input-group-append custom">
                     <span class="input-group-text"><i class="icon-copy dw dw-user1"></i></span>
                 </div>
             </div>
+            @error('login_id')
+                    <div class="d-block text-danger" style="margin-top: -25px; margin-bottom: 15px">
+                        {{ $message }}
+                    </div>
+            @enderror
             <div class="input-group custom">
-                <input type="password" class="form-control form-control-lg" placeholder="**********">
+                <input type="password" class="form-control form-control-lg" placeholder="**********"
+                    name="password" value="{{ old('password') }}"
+                >
                 <div class="input-group-append custom">
                     <span class="input-group-text"><i class="dw dw-padlock1"></i></span>
-                </div>
+                </div>  
             </div>
+            @error('password')
+                    <div class="d-block text-danger" style="margin-top: -25px; margin-bottom: 15px">
+                        {{ $message }}
+                    </div>
+            @enderror
             <div class="row pb-30">
                 <div class="col-6">
                     <div class="custom-control custom-checkbox">
