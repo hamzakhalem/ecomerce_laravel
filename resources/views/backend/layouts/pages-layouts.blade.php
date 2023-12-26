@@ -6,9 +6,9 @@
 	<title>@yield('title')</title>
 
 	<!-- Site favicon -->
-	<link rel="apple-touch-icon" sizes="180x180" href="backend/vendors/images/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="backend/vendors/images/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="backend/vendors/images/favicon-16x16.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/backend/vendors/images/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/backend/vendors/images/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/backend/vendors/images/favicon-16x16.png">
 
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -16,9 +16,9 @@
 	<!-- Google Font -->
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 	<!-- CSS -->
-	<link rel="stylesheet" type="text/css" href="backend/vendors/styles/core.css">
-	<link rel="stylesheet" type="text/css" href="backend/vendors/styles/icon-font.min.css">
-	<link rel="stylesheet" type="text/css" href="backend/vendors/styles/style.css">
+	<link rel="stylesheet" type="text/css" href="/backend/vendors/styles/core.css">
+	<link rel="stylesheet" type="text/css" href="/backend/vendors/styles/icon-font.min.css">
+	<link rel="stylesheet" type="text/css" href="/backend/vendors/styles/style.css">
 
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
@@ -36,7 +36,7 @@
 <body>
 	<div class="pre-loader">
 		<div class="pre-loader-box">
-			<div class="loader-logo"><img src="backend/vendors/images/deskapp-logo.svg" alt=""></div>
+			<div class="loader-logo"><img src="/backend/vendors/images/deskapp-logo.svg" alt=""></div>
 			<div class='loader-progress' id="progress_div">
 				<div class='bar' id='bar1'></div>
 			</div>
@@ -107,42 +107,42 @@
 							<ul>
 								<li>
 									<a href="#">
-										<img src="backend/vendors/images/img.jpg" alt="">
+										<img src="/backend/vendors/images/img.jpg" alt="">
 										<h3>John Doe</h3>
 										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
 									</a>
 								</li>
 								<li>
 									<a href="#">
-										<img src="backend/vendors/images/photo1.jpg" alt="">
+										<img src="/backend/vendors/images/photo1.jpg" alt="">
 										<h3>Lea R. Frith</h3>
 										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
 									</a>
 								</li>
 								<li>
 									<a href="#">
-										<img src="backend/vendors/images/photo2.jpg" alt="">
+										<img src="/backend/vendors/images/photo2.jpg" alt="">
 										<h3>Erik L. Richards</h3>
 										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
 									</a>
 								</li>
 								<li>
 									<a href="#">
-										<img src="backend/vendors/images/photo3.jpg" alt="">
+										<img src="/backend/vendors/images/photo3.jpg" alt="">
 										<h3>John Doe</h3>
 										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
 									</a>
 								</li>
 								<li>
 									<a href="#">
-										<img src="backend/vendors/images/photo4.jpg" alt="">
+										<img src="/backend/vendors/images/photo4.jpg" alt="">
 										<h3>Renee I. Hansen</h3>
 										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
 									</a>
 								</li>
 								<li>
 									<a href="#">
-										<img src="backend/vendors/images/img.jpg" alt="">
+										<img src="/backend/vendors/images/img.jpg" alt="">
 										<h3>Vicki M. Coleman</h3>
 										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
 									</a>
@@ -156,20 +156,31 @@
 				<div class="dropdown">
 					<a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
 						<span class="user-icon">
-							<img src="backend/vendors/images/photo1.jpg" alt="">
+							<img src="/backend/vendors/images/photo1.jpg" alt="">
 						</span>
 						<span class="user-name">Ross C. Lopez</span>
 					</a>
-					<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-						<a class="dropdown-item" href="profile.html"><i class="dw dw-user1"></i> Profile</a>
-						<a class="dropdown-item" href="profile.html"><i class="dw dw-settings2"></i> Setting</a>
-						<a class="dropdown-item" href="faq.html"><i class="dw dw-help"></i> Help</a>
-						<a class="dropdown-item" href="login.html"><i class="dw dw-logout"></i> Log Out</a>
-					</div>
+					@if (Auth::guard('admin')->check())
+						<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+							<a class="dropdown-item" href="profile.html"><i class="dw dw-user1"></i> Profile</a>
+							<a class="dropdown-item" href="profile.html"><i class="dw dw-settings2"></i> Setting</a>
+							<a class="dropdown-item" href="faq.html"><i class="dw dw-help"></i> Help</a>
+							<a class="dropdown-item" href="{{ route('admin.logout') }}"><i class="dw dw-logout"></i> Log Out</a>
+						</div>
+					@elseif (Auth::guard('seller')->check())
+						<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+							<a class="dropdown-item" href="profile.html"><i class="dw dw-user1"></i> Profile</a>
+							<a class="dropdown-item" href="profile.html"><i class="dw dw-settings2"></i> Setting</a>
+							<a class="dropdown-item" href="faq.html"><i class="dw dw-help"></i> Help</a>
+							<a class="dropdown-item" href="#"><i class="dw dw-logout"></i> Log Out</a>
+						</div>	
+					@elseif (Auth::guard('client')->check())	
+					@endif
+					
 				</div>
 			</div>
 			<div class="github-link">
-				<a href="https://github.com/dropways/deskapp" target="_blank"><img src="backend/vendors/images/github.svg" alt=""></a>
+				<a href="https://github.com/dropways/deskapp" target="_blank"><img src="/backend/vendors/images/github.svg" alt=""></a>
 			</div>
 		</div>
 	</div>
@@ -252,8 +263,8 @@
 	<div class="left-side-bar">
 		<div class="brand-logo">
 			<a href="index.html">
-				<img src="backend/vendors/images/deskapp-logo.svg" alt="" class="dark-logo">
-				<img src="backend/vendors/images/deskapp-logo-white.svg" alt="" class="light-logo">
+				<img src="/backend/vendors/images/deskapp-logo.svg" alt="" class="dark-logo">
+				<img src="/backend/vendors/images/deskapp-logo-white.svg" alt="" class="light-logo">
 			</a>
 			<div class="close-sidebar" data-toggle="left-sidebar-close">
 				<i class="ion-close-round"></i>
@@ -441,7 +452,7 @@
 					<li>
 						<a href="https://dropways.github.io/deskapp-free-single-page-website-template/" target="_blank" class="dropdown-toggle no-arrow">
 							<span class="micon dw dw-paper-plane1"></span>
-							<span class="mtext">Landing Page <img src="backend/vendors/images/coming-soon.png" alt="" width="25"></span>
+							<span class="mtext">Landing Page <img src="/backend/vendors/images/coming-soon.png" alt="" width="25"></span>
 						</a>
 					</li>
 				</ul>
@@ -490,10 +501,10 @@
 		</div>
 	</div>
 	<!-- js -->
-	<script src="backend/vendors/scripts/core.js"></script>
-	<script src="backend/vendors/scripts/script.min.js"></script>
-	<script src="backend/vendors/scripts/process.js"></script>
-	<script src="backend/vendors/scripts/layout-settings.js"></script>
+	<script src="/backend/vendors/scripts/core.js"></script>
+	<script src="/backend/vendors/scripts/script.min.js"></script>
+	<script src="/backend/vendors/scripts/process.js"></script>
+	<script src="/backend/vendors/scripts/layout-settings.js"></script>
     @stack('scripts')
 </body>
 </html>

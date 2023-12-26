@@ -60,9 +60,9 @@
                     <div class="input-group mb-0">
                         <!--
                             use code for form submit
-                            <input class="btn btn-primary btn-lg btn-block" type="submit" value="Sign In">
                         -->
-                        <a class="btn btn-primary btn-lg btn-block" href="index.html">Sign In</a>
+                        <input class="btn btn-primary btn-lg btn-block" type="submit" value="Sign In">
+                        {{-- <a class="btn btn-primary btn-lg btn-block" href="index.html">Sign In</a> --}}
                     </div>
 
                 </div>
