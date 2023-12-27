@@ -36,7 +36,10 @@
 			</div>
 			<div class="login-menu">
 				<ul>
-					<li><a href="register.html">Register</a></li>
+					@if (!Route::is('admin.*'))
+						<li><a href="register.html">Register</a></li>
+						
+					@endif
 				</ul>
 			</div>
 		</div>
