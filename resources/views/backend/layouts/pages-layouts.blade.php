@@ -273,42 +273,36 @@
 		<div class="menu-block customscroll">
 			<div class="sidebar-menu">
 				<ul id="accordion-menu">
-
-					<li>
-						<a href="calendar.html" class="dropdown-toggle no-arrow">
-							<span class="micon bi bi-home"></span><span class="mtext">Home</span>
-						</a>
+					@if (!Route::is('admin.*'))
+						<li>
+							<a href="{{ route('admin.home') }}" class="dropdown-toggle no-arrow">
+								<span class="micon fa fa-home"></span><span class="mtext">Home</span>
+							</a>
+						</li>
+						<li>
+							<a href="invoice.html" class="dropdown-toggle no-arrow">
+								<span class="micon dw dw-invoice"></span><span class="mtext">Invoice</span>
+							</a>
+						</li>
+						<li>
+							<div class="dropdown-divider"></div>
+						</li>
+						<li>
+							<div class="sidebar-small-cap">Settings</div>
+						</li>
+						
+						<li>
+							<a href="https://dropways.github.io/deskapp-free-single-page-website-template/" target="_blank" class="dropdown-toggle no-arrow">
+								<span class="micon dw dw-paper-plane1"></span>
+								<span class="mtext">Profile </span>
+							</a>
 					</li>
 
+					@else
+						
+					
+					@endif
 
-					<li>
-						<a href="invoice.html" class="dropdown-toggle no-arrow">
-							<span class="micon dw dw-invoice"></span><span class="mtext">Invoice</span>
-						</a>
-					</li>
-					<li>
-						<div class="dropdown-divider"></div>
-					</li>
-					<li>
-						<div class="sidebar-small-cap">Extra</div>
-					</li>
-					<li>
-						<a href="javascript:;" class="dropdown-toggle">
-							<span class="micon dw dw-edit-2"></span><span class="mtext">Documentation</span>
-						</a>
-						<ul class="submenu">
-							<li><a href="introduction.html">Introduction</a></li>
-							<li><a href="getting-started.html">Getting Started</a></li>
-							<li><a href="color-settings.html">Color Settings</a></li>
-							<li><a href="third-party-plugins.html">Third Party Plugins</a></li>
-						</ul>
-					</li>
-					<li>
-						<a href="https://dropways.github.io/deskapp-free-single-page-website-template/" target="_blank" class="dropdown-toggle no-arrow">
-							<span class="micon dw dw-paper-plane1"></span>
-							<span class="mtext">Landing Page <img src="/backend/vendors/images/coming-soon.png" alt="" width="25"></span>
-						</a>
-					</li>
 				</ul>
 			</div>
 		</div>
